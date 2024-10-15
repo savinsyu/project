@@ -1,0 +1,15 @@
+{% extends "base.html" %} {% block title %}Команды bash{% endblock %} {% block content %}
+   <table class="table table-hover caption-top">
+      <caption>Всего записей в таблице bash: <b>{{ bash_list_count_print_int }}</b>, <a
+            href="{{ url_for('add_bash_command') }}">добавить новую запись</a></caption>
+      {% for bash_list in bash_list %}
+      <tbody>
+         <tr>
+            <td><a href="{{ url_for('get_post_bash_command', bash_id=bash_list['bash_id']) }}">{{ bash_list['bash_name']
+                  }}</a></td>
+            <td>{{ bash_list['bash_command'] }}</td>
+         </tr>
+      </tbody>
+      {% endfor %}
+   </table>
+{% endblock %}

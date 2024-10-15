@@ -1,0 +1,17 @@
+{% extends "base.html" %} {% block title %}Команды python{% endblock %} {% block content %}
+
+<table class="table table-hover caption-top">
+   <caption>Всего записей в таблице python: <b>{{ python_list_count_print_int }}</b>, <a
+         href="{{ url_for('add_python_command') }}">добавить новую запись</a></caption>
+   {% for python_list in python_list %}
+   <tbody>
+      <tr>
+         <td><a href="{{ url_for('get_post_python_command', python_id=python_list['python_id']) }}">{{ python_list['python_name']
+               }}</a></td>
+         <td>{{ python_list['python_command'] }}</td>
+      </tr>
+   </tbody>
+   {% endfor %}
+</table>
+
+{% endblock %}
