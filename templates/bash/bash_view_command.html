@@ -2,11 +2,12 @@
 {% block title %}Страница записи{% endblock %}
 {% block content %}
 <div class="container p-4">
-   <div class="card">
-      <h5 class="card-header">{{ bash_view['bash_name'] }}</h5>
+
+
+      <h5 class="card-header"><pre>{{ bash_view['bash_name'] }}</pre></h5>
+
       <div class="card-body">
-         <h5 class="card-title">{{ bash_view['bash_command'] }}</h5>
-         <p class="card-text">{{ bash_view['bash_description'] }}</p>
+<pre>{{ bash_view['bash_command'] }}</pre>
          <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
                <a href="{{ url_for('edit_bash_command', bash_id=bash_view['bash_id']) }}">Редактировать</a>
@@ -27,5 +28,5 @@
          </ul>
       </div>
    </div>
-</div>
+
 {% endblock %}

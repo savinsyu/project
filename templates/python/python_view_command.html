@@ -6,7 +6,7 @@
       <h5 class="card-header">{{ python_view['python_name'] }}</h5>
       <div class="card-body">
          <h5 class="card-title">{{ python_view['python_command'] }}</h5>
-         <p class="card-text">{{ python_view['python_description'] }}</p>
+         <p class="card-text"><pre>{{ python_view['python_description'] }}</pre></p>
          <ul class="list-group list-group-horizontal">
             <li class="list-group-item">
                <a href="{{ url_for('edit_python_command', python_id=python_view['python_id']) }}">Редактировать</a>

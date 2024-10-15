@@ -89,6 +89,7 @@ INSERT INTO "links" VALUES(19,'Сайт с документацией по веб-технологиям','https:/
 INSERT INTO "links" VALUES(20,'Документация по Bootstrap','https://getbootstrap.com/','Документация по Bootstrap.');
 INSERT INTO "links" VALUES(21,'Описание библиотеки, которая позволяет работает с базой mysql','https://pypi.org/project/PyMySQL/','Описание библиотеки, которая позволяет работает с базой mysql.');
 INSERT INTO "links" VALUES(22,'Документация CLI PowerSHell','https://learn.microsoft.com/ru-ru/powershell/','Документация CLI PowerSHell');
+INSERT INTO "links" VALUES(25,'Blueprint','https://dnmtechs.com/splitting-a-python-flask-app-into-multiple-files/','Разбивка приложения на части');
 CREATE TABLE "python" (
     "python_id" INTEGER PRIMARY KEY AUTOINCREMENT,
     "python_command" TEXT NOT NULL,
@@ -124,6 +125,39 @@ INSERT INTO "python" VALUES(30,'df = pd.DataFrame(lst, columns=[c[0] for c in cu
 INSERT INTO "python" VALUES(31,'df = pd.read_excel(''sotr.xlsx'', index_col=0)','Загрузка данных из EXCEL файла',NULL);
 INSERT INTO "python" VALUES(32,'data = pd.read_csv("data.csv")','Загрузка CSV-данных','Метод загружает csv файл с данными.');
 INSERT INTO "python" VALUES(2090,'Тестовое сообщение','Тестовое сообщение','Тестовое сообщение1');
+INSERT INTO "python" VALUES(2092,'Скрипт преобразования данных таблицы в датафрейм','Скрипт преобразования данных таблицы в датафрейм','import sqlite3
+import pandas as pd
+
+
+con = sqlite3.connect("/database1.db")
+cur = con.cursor()
+res = cur.execute("SELECT * FROM links")
+result = res.fetchall()
+df = pd.DataFrame(result, columns=[c[0] for c in cur.description])');
+INSERT INTO "python" VALUES(2093,'Скрипт добавления таблицы в базу данных','Скрипт добавления таблицы в базу данных','import sqlite3
+
+
+def create_tables():
+    sql_statements = [
+        """CREATE TABLE IF NOT EXISTS main.table_name (
+                id INTEGER PRIMARY KEY autoincrement, 
+                table_name TEXT not null,
+                table_content TEXT not null
+        );"""]
+
+    try:
+        with sqlite3.connect(''/database1.db'') as conn:
+            cursor = conn.cursor()
+            for statement in sql_statements:
+                cursor.execute(statement)
+
+            conn.commit()
+    except sqlite3.Error as e:
+        print(e)
+
+
+if __name__ == ''__main__'':
+    create_tables()');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -144,6 +178,6 @@ INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы
 DELETE FROM "sqlite_sequence";
 INSERT INTO "sqlite_sequence" VALUES('bash',96);
 INSERT INTO "sqlite_sequence" VALUES('sql',1162);
-INSERT INTO "sqlite_sequence" VALUES('links',24);
-INSERT INTO "sqlite_sequence" VALUES('python',2090);
+INSERT INTO "sqlite_sequence" VALUES('links',25);
+INSERT INTO "sqlite_sequence" VALUES('python',2093);
 COMMIT;

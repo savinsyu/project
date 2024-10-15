@@ -1,6 +1,6 @@
 #!/bin/bash
 DATE=$(date)
-TEXT="Add commit date: $DATE"
+TEXT="Hotfix: $DATE"
 git add .
 git commit -m "$TEXT"
 git push

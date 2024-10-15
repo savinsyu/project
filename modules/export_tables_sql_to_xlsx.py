@@ -13,7 +13,7 @@ def export_tables_sql_to_xlsx():
     df_python_list = pd.DataFrame(python_list)
     df_links_list = pd.DataFrame(links_list)
     df_bash_list = pd.DataFrame(bash_list)
-    with pd.ExcelWriter('xlsx_export/output.xlsx') as writer:
+    with pd.ExcelWriter('files/database_tables.xlsx') as writer:
         df_sql_list.to_excel(writer, sheet_name='SQL', header=False, index=False)
         df_python_list.to_excel(writer, sheet_name='Python', header=False, index=False)
         df_links_list.to_excel(writer, sheet_name='Links', header=False, index=False)
