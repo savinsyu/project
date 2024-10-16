@@ -40,7 +40,7 @@ def bash_list_commands():
     bash_list_count = cur.execute("SELECT COUNT(*) FROM bash")
     bash_list_count_print = bash_list_count.fetchone()
     bash_list_count_print_int = int(bash_list_count_print[0])
-    bash_list = conn.execute("SELECT * FROM bash").fetchall()
+    bash_list = conn.execute("SELECT * FROM bash ORDER BY 1 DESC").fetchall()
     conn.close()
     return render_template("bash/bash_list_commands.html",
                            bash_list=bash_list,
@@ -132,7 +132,7 @@ def sql_list_commands():
     sql_list_count = cur.execute("SELECT COUNT(*) FROM sql")
     sql_list_count_print = sql_list_count.fetchone()
     sql_list_count_print_int = int(sql_list_count_print[0])
-    sql_list = conn.execute("SELECT * FROM sql").fetchall()
+    sql_list = conn.execute("SELECT * FROM sql ORDER BY 1 DESC").fetchall()
     conn.close()
     return render_template("sql/sql_list_commands.html",
                            sql_list=sql_list,

@@ -1,6 +1,5 @@
 {% extends "base.html" %} {% block title %}Команды bash{% endblock %}
 {% block content %}
-<div class="container mb-3 mt-3 rounded">
    <form method="post">
       <div class="card mb-3">
          <label for="bash_command" class="card-header">Команда</label>
@@ -9,12 +8,7 @@
       </div>
       <div class="card mb-3">
          <label for="bash_name" class="card-header">Описание команды</label>
-         <textarea class="form-control" id="bash_name" name="bash_name" rows="1" placeholder="Введите описание команды"
-            required></textarea>
-      </div>
-      <div class="card mb-3">
-         <label for="bash_description" class="card-header">Подробно</label>
-         <textarea class="form-control" id="bash_description" name="bash_description" rows="8" placeholder="Введите описание команды"
+         <textarea class="form-control" id="bash_name" name="bash_name" rows="8" placeholder="Введите описание команды"
             required></textarea>
       </div>
       <div class="row g-2">
@@ -26,8 +20,8 @@
          </div>
       </div>
    </form>
-</div>
-<div class="container p-4">
+
+<div class="container">
    {% include 'errors.html' %}
 </div>
 {% endblock %}
