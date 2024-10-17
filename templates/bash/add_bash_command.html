@@ -3,21 +3,17 @@
    <form method="post">
       <div class="card mb-3">
          <label for="bash_command" class="card-header">Команда</label>
-         <textarea class="form-control" id="bash_command" name="bash_command" rows="1" placeholder="Введите команду"
+         <textarea class="form-control" id="bash_command" name="bash_command" rows="8" placeholder="Введите команду"
             required></textarea>
       </div>
       <div class="card mb-3">
          <label for="bash_name" class="card-header">Описание команды</label>
-         <textarea class="form-control" id="bash_name" name="bash_name" rows="8" placeholder="Введите описание команды"
+         <textarea class="form-control" id="bash_name" name="bash_name" rows="1" placeholder="Введите описание команды"
             required></textarea>
       </div>
-      <div class="row g-2">
-         <div class="col-auto">
-            <a class="btn btn-secondary" href="{{ url_for('bash_list_commands') }} ">Вернуться к списку</a>
-         </div>
-         <div class="col-auto">
-            <button type="submit" value="" class="btn btn-success">Сохранить</button>
-         </div>
+      <div class="btn-group btn-group" role="group" aria-label="...">
+            <a class="btn btn-outline-dark" href="{{ url_for('bash_list_commands') }} ">Вернуться к списку</a>
+            <button type="submit" value="" class="btn btn-outline-dark">Сохранить</button>
       </div>
    </form>
 

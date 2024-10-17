@@ -1,23 +1,26 @@
 {% extends 'base.html' %}
 {% block title %}Страница записи{% endblock %}
 {% block content %}
-   <div class="card">
-      <h5 class="card-header">
-         <pre>{{ bash_view['bash_name'] }}</pre>
-      </h5>
-      <div class="card-body">
-         <pre>{{ bash_view['bash_command'] }}</pre>
-         <div class="btn-group btn-group" role="group" aria-label="...">
-            <a href="{{ url_for('bash_list_commands') }}" class="btn btn-outline-dark">Вернуться к списку</a>
-            <a href="{{ url_for('add_bash_command') }}" class="btn btn-outline-dark">Добавить новую</a>
-            <a href="{{ url_for('edit_bash_command', bash_id=bash_view['bash_id']) }}" class="btn btn-outline-dark">Редактировать</a>
-            <form action="{{ url_for('delete_bash_command', bash_id=bash_view['bash_id'])}}" class="btn btn-outline-dark active"
-                  method="POST">Убить запись?
-                  <input type="submit" class="btn btn-outline-dark" value="Да!"
-                     onclick="return confirm('Вы уверены что хотите удалить запись?')" />
-               </form>
-         </div>
+<div class="card">
+   <h5 class="card-header">
+      ID {{ bash_view['bash_id'] }}
+   </h5>
+   <div class="card-body">
+      <h5 class="card-title">{{ bash_view['bash_name'] }}</h5>
+      <p class="card-text">
+      <pre>{{ bash_view['bash_command'] }}</pre>
+      </p>
+      <div class="btn-group btn-group pb-2" role="group" aria-label="...">
+         <a href="{{ url_for('bash_list_commands') }}" class="btn btn-outline-dark">Вернуться к списку</a>
+         <a href="{{ url_for('add_bash_command') }}" class="btn btn-outline-dark">Добавить новую</a>
+         <a href="{{ url_for('edit_bash_command', bash_id=bash_view['bash_id']) }}"
+            class="btn btn-outline-dark">Редактировать</a>
       </div>
+      <form action="{{ url_for('delete_bash_command.delete_bash_command', bash_id=bash_view['bash_id'])}}" method="POST"
+         class="pb-2">
+         <input type="submit" class="btn btn-outline-danger" value="Или всё же удалить запись?"
+            onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
+      </form>
    </div>
-
+</div>
 {% endblock %}

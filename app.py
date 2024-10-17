@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
-from modules import export_tables_sql_to_xlsx, dump, connect, delete_links_command
+from modules import export_tables_sql_to_xlsx, dump, connect, delete_links_command, delete_sql_command, delete_bash_command, delete_python_command
 
 app = Flask(__name__)
 app.register_blueprint(delete_links_command.bp)
+app.register_blueprint(delete_bash_command.bp)
+app.register_blueprint(delete_sql_command.bp)
+app.register_blueprint(delete_python_command.bp)
 app.secret_key = "secret key"
 
 
@@ -114,16 +117,6 @@ def add_bash_command():
     return render_template("bash/add_bash_command.html")
 
 
-@app.route("/bash/delete/<int:bash_id>/", methods=("POST",))
-def delete_bash_command(bash_id):
-    conn = connect.get_db_connection()
-    conn.execute("DELETE FROM bash WHERE bash_id = ?",
-                 (bash_id,))
-    conn.commit()
-    conn.close()
-    return redirect(url_for("bash_list_commands"))
-
-
 # Блок SQL
 @app.route("/sql")
 def sql_list_commands():
@@ -207,16 +200,6 @@ def add_sql_command():
     return render_template("sql/add_sql_command.html")
 
 
-@app.route("/sql/delete/<int:sql_id>/", methods=("POST",))
-def delete_sql_command(sql_id):
-    conn = connect.get_db_connection()
-    conn.execute("DELETE FROM sql WHERE sql_id = ?",
-                 (sql_id,))
-    conn.commit()
-    conn.close()
-    return redirect(url_for("sql_list_commands"))
-
-
 # Блок python
 @app.route("/python")
 def python_list_commands():
@@ -298,16 +281,6 @@ def add_python_command():
             flash('Ошибка сохранения записи!', category='error')
 
     return render_template("python/add_python_command.html")
-
-
-@app.route("/python/delete/<int:python_id>/", methods=("POST",))
-def delete_python_command(python_id):
-    conn = connect.get_db_connection()
-    conn.execute("DELETE FROM python WHERE python_id = ?",
-                 (python_id,))
-    conn.commit()
-    conn.close()
-    return redirect(url_for("python_list_commands"))
 
 
 # Блок links

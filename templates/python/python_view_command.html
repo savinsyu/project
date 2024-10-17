@@ -1,31 +1,30 @@
 {% extends 'base.html' %}
 {% block title %}Страница записи{% endblock %}
 {% block content %}
-<div class="container p-4">
-   <div class="card">
-      <h5 class="card-header">{{ python_view['python_name'] }}</h5>
-      <div class="card-body">
-         <h5 class="card-title">{{ python_view['python_command'] }}</h5>
-         <p class="card-text"><pre>{{ python_view['python_description'] }}</pre></p>
-         <ul class="list-group list-group-horizontal">
-            <li class="list-group-item">
-               <a href="{{ url_for('edit_python_command', python_id=python_view['python_id']) }}">Редактировать</a>
-            </li>
-            <li class="list-group-item">
-               <a href="{{ url_for('python_list_commands') }}">Вернуться к списку</a>
-            </li>
-            <li class="list-group-item delete">
-               <form action="{{ url_for('delete_python_command', python_id=python_view['python_id'])}}" class="add"
-                  method="POST">
-                  <input type="submit" class="button" value="Удалить"
-                     onclick="return confirm('Вы уверены что хотите удалить запись?')" />
-               </form>
-            </li>
-            <li class="list-group-item">
-               <a href="{{ url_for('add_python_command') }}">Добавить новую</a>
-            </li>
-         </ul>
+<div class="card">
+   <h5 class="card-header"> ID {{ python_view['python_id'] }}</h5>
+   <div class="card-body">
+      <h5 class="card-title">
+         {{ python_view['python_name'] }}
+      </h5>
+      <p class="card-text">
+      <pre>
+            {{ python_view['python_command'] }}
+         </pre>
+      </p>
+      <p class="card-text">
+         {{ python_view['python_description'] }}
+      </p>
+      <div class="btn-group btn-group pb-2" role="group" aria-label="...">
+         <a href="{{ url_for('edit_python_command', python_id=python_view['python_id']) }} "
+            class="btn btn-outline-dark">Редактировать</a>
+         <a href="{{ url_for('python_list_commands') }}" class="btn btn-outline-dark">Вернуться к списку</a>
+         <a href="{{ url_for('add_python_command') }}" class="btn btn-outline-dark">Добавить новую</a>
       </div>
+      <form action="{{ url_for('delete_python_command.delete_python_command', python_id=python_view['python_id'])}}" method="POST" class="pb-2">
+         <input type="submit" class="btn btn-outline-dange" value="Или всё же удалить запись?"
+            onclick="return confirm('Вы точно уверены что хотите удалить запись?')" />
+      </form>
    </div>
 </div>
 {% endblock %}

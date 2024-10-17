@@ -9,9 +9,11 @@
    </head>
    <body>
       {% include 'navbar.html' %}
-      <div class="container">
-         {% block content %}
-         {% endblock %}
+      <div class="container-fluid">
+         <article>
+            {% block content %}
+            {% endblock %}
+         </article>
       </div>
    </body>
 </html>

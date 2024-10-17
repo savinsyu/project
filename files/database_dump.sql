@@ -94,7 +94,9 @@ INSERT INTO "bash" VALUES(99,'#!/bin/bash
 # И наконец запускается 3-е приложение
 ~/AppData/Local/Programs/Python/Python312/python.exe /p/s.savin/flask-project-full/app.py &','bash-скрипт который запускает три приложения flask
 ');
-INSERT INTO "bash" VALUES(100,'sfsdfdsfsdfsdfsd','sdfsdfsdfsdfsdfsdfsd');
+INSERT INTO "bash" VALUES(102,'#!/bin/bash
+venv/Scripts/python.exe app.py &','Тестовая bash команда');
+INSERT INTO "bash" VALUES(105,'delete_bash_command','delete_bash_command');
 CREATE TABLE "links"
 (
     links_id      INTEGER
@@ -361,6 +363,7 @@ def delete_post_test(test_id):
 
 if __name__ == "__main__":
     app.run(debug=True, host=''0.0.0.0'', port=83)');
+INSERT INTO "python" VALUES(2099,'Тестовая запись','Тестовая запись','Тестовая запись');
 CREATE TABLE [sql] ( 
   "sql_id" INTEGER PRIMARY KEY AUTOINCREMENT,
   "sql_command" TEXT NOT NULL,
@@ -379,8 +382,8 @@ INSERT INTO "sql" VALUES(10,'DROP TABLE [train];','Удаляет таблицу базы данных',
 INSERT INTO "sql" VALUES(1159,'SELECT DISTINCT field FROM table;','Поиск уникальных значений','DISTINCT ищет и выводит уникальные значения указанного в запросе столбца ');
 INSERT INTO "sql" VALUES(1161,'SELECT * FROM table;','Вывод всех записей таблицы','Вывод всех записей таблицы');
 DELETE FROM "sqlite_sequence";
-INSERT INTO "sqlite_sequence" VALUES('bash',100);
+INSERT INTO "sqlite_sequence" VALUES('bash',105);
 INSERT INTO "sqlite_sequence" VALUES('sql',1162);
 INSERT INTO "sqlite_sequence" VALUES('links',25);
-INSERT INTO "sqlite_sequence" VALUES('python',2098);
+INSERT INTO "sqlite_sequence" VALUES('python',2099);
 COMMIT;
